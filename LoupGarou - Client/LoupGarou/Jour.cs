@@ -7,14 +7,18 @@ namespace LoupGarou
 {
     public class Jour
     {
-        int auto;
-        int lesMorts;
+        //Mettre les variables en public
+        public static int auto;
+        //Collection lesMorts;
         bool lEtat;
         int lid;
 
         public Jour()
         {
-
+//auto++;
+            //Initialiser lesMOrts
+            //Valoriser lId et lEtat
+            
         }
     }
 }
