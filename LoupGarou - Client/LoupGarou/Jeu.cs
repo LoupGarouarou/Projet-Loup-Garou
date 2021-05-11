@@ -52,7 +52,7 @@ namespace LoupGarou
             for(int i=0; i < _nbreLoup; i++)
             {
                 _Aleatoire = _Random.Next(0, n);
-                lesJoueurs[temp.ElementAt(_Aleatoire).Key].leRole = lesRoles[0];
+                lesJoueurs[temp.ElementAt(_Aleatoire).Key].leRole = lesRoles[1];
                 lesJoueurs.Remove(temp.ElementAt(_Aleatoire).Key);
                 n = n - 1;
             }
@@ -61,7 +61,7 @@ namespace LoupGarou
 
         public void jeu()
         { 
-
+//Les roles
         }
 
         public void init()
@@ -131,10 +131,11 @@ namespace LoupGarou
         {
             if(lesJoueursEnBallotage.ContainsKey(choix))
             {
-                lesJoueursEnBallotage[choix].leNbreVote = lesJoueursEnBallotage[choix].leNbreVote - 1;
+                lesJoueursEnBallotage[choix].leNbreVote = lesJoueursEnBallotage[choix].leNbreVote + 1;
             }else
             {
                 lesJoueursEnBallotage.Add(choix, lesJoueursActifs[choix]);
+                 lesJoueursEnBallotage[choix].leNbreVote = lesJoueursEnBallotage[choix].leNbreVote + 1;
             }
         }
         public int validationVote()
@@ -142,18 +143,19 @@ namespace LoupGarou
             int result = 0;
             for(int i = 0; i < lesJoueursEnBallotage.Count; i++)
             {
-                if(result == lesJoueursEnBallotage.ElementAt(i).Value.leNbreVote)
+                if(result < lesJoueursEnBallotage.ElementAt(i).Value.leNbreVote)
                 {
                     result = lesJoueursEnBallotage.ElementAt(i).Value.leNbreVote;
 
                     if(i>0)
                     {
                         lesJoueursEnBallotage.Remove(lesJoueursEnBallotage.ElementAt(i - 1).Key);
-                    }else if(result > lesJoueursEnBallotage.ElementAt(i).Value.leNbreVote)
+                    }
+                }else if(result > lesJoueursEnBallotage.ElementAt(i).Value.leNbreVote)
                     {
                         lesJoueursEnBallotage.Remove(lesJoueursEnBallotage.ElementAt(i).Key);
                     }
-                }
+                
             }
             if(lesJoueursEnBallotage.Count == 1)
             {
@@ -202,7 +204,7 @@ namespace LoupGarou
             }
             foreach (KeyValuePair<int, Joueur> element in lesJoueursActifs)
             {
-                if (element.Value.leRole == lesRoles[0] || element.Value.leRole == lesRoles[1])
+                if (element.Value.leRole == lesRoles[0] || element.Value.leRole == lesRoles[2])
                 {
                     lesVillageois.Add(element.Key, element.Value);
                 }
