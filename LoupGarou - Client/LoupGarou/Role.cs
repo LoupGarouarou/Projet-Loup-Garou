@@ -9,11 +9,11 @@ namespace LoupGarou
     {
         string leDescriptif;
         string leLibelle;
-        Role leRole;
+        public List<Role> lesRoles;
 
         public Role()
         {
-
+//Valoriser les attributs
         }
     }
 }
