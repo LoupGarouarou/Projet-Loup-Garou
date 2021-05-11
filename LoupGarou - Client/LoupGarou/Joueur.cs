@@ -20,7 +20,7 @@ namespace LoupGarou
 
         public Joueur()
         {
-
+//Quand on crée un joueur on crée un client
         }
     }
 }
